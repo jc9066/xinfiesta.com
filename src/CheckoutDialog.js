@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const CheckoutDialog = ({ show, onHide, products, quantities, onConfirmPayment }) => {
+const CheckoutDialog = ({ show, onHide, products, quantities, onUpdateQuantities, onConfirmPayment }) => {
   const [editableQuantities, setEditableQuantities] = useState({});
 
   useEffect(() => {
@@ -14,6 +14,17 @@ const CheckoutDialog = ({ show, onHide, products, quantities, onConfirmPayment }
       [itemcode]: Math.max(0, value),
     }));
   };
+
+  const finalProducts = Object.keys(editableQuantities).map((itemcode) => {
+    const quantity = editableQuantities[itemcode];
+    const product = products.find((product) => product.itemcode === itemcode);
+    
+    return {
+      name: product ? product.itemcode : '', // Adjust based on your product object structure
+      price: product ? product.price : 0,
+      quantity: quantity,
+    };
+  });
 
   const calculateSubtotal = () => {
     return Object.keys(editableQuantities).reduce((total, itemcode) => {
@@ -35,8 +46,15 @@ const CheckoutDialog = ({ show, onHide, products, quantities, onConfirmPayment }
   };
 
   const deliveryFee = calculateTotalPayment() < 50 ? 5 : 0;  
+  finalProducts.push({
+    name: 'DELIVERY',
+    price: deliveryFee,
+    quantity: 1,
+  });
+
   const handleSubmit = () => {
-    onConfirmPayment(calculateTotalPayment().toFixed(2));
+    onUpdateQuantities(editableQuantities);
+    onConfirmPayment(calculateTotalPayment().toFixed(2), finalProducts);
     onHide(); 
   };
 

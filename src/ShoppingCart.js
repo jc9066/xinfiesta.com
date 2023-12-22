@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
-// import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-// import { loadStripe } from '@stripe/stripe-js';
 import './ShoppingCart.css';
 import CheckoutDialog from './CheckoutDialog';
+import axios from 'axios'; 
+import Swal from 'sweetalert2'; 
 
 const ShoppingCart = () => {
     const [quantities, setQuantities] = useState({});
@@ -13,12 +13,12 @@ const ShoppingCart = () => {
   const listProdText = "Listing Products";
   const products = [
     { itemcode: 'ORIGINALKEROPOK150', name: 'Lekor Original Favor (150g)', images:["originallekor150.jpg"], price: 10.00 },
-    { itemcode: 'ORIGINALKEROPOK250', name: 'Lekor Original Favor (250g)', images:["originallekor150.jpg"], price: 15.00 },
+    { itemcode: 'ORIGINALKEROPOK250', name: 'Lekor Original Favor (250g)', images:["originallekor250.jpg"], price: 15.00 },
     { itemcode: 'SPICYKEROPOK150', name: 'Lekor Sweet & Spicy Favor (150g)', images:["spicylekor150.jpg"], price: 10.00 },
-    { itemcode: 'SPICYKEROPOK250', name: 'Lekor Sweet & Spicy Favor (250g)', images:["spicylekor150.jpg"], price: 15.00 },
-    { itemcode: 'ABALONE001', name: 'Canned Abalone (425g)', images:["cannedabalone.jpg"], price: 15.00 },
-    { itemcode: 'BRAISEDABALONE', name: 'Braised Abalone (425g)', images:["braisedabalone.jpg"], price: 15.00 },
-    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["no_image.jpg"], price: 10.00 },
+    { itemcode: 'SPICYKEROPOK250', name: 'Lekor Sweet & Spicy Favor (250g)', images:["spicylekor250.jpg"], price: 15.00 },
+    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["crabstick.jpg"], price: 10.00 },
+    { itemcode: 'ABALONE001', name: 'Canned Abalone (425g)', images:["cannedabalone.jpg"], price: 18.00 },
+    { itemcode: 'BRAISEDABALONE', name: 'Braised Abalone (425g)', images:["braisedabalone.jpg"], price: 18.00 },
   ];
   const [totalQuantity, setTotalQuantity] = useState(0);
   const basketPreviewText = (
@@ -31,6 +31,16 @@ const ShoppingCart = () => {
   );
 
   useEffect(() => {
+    const queryString = window.location.search;
+    if(queryString=="?t=success"){
+        Swal.fire({
+            title: 'Order Received!',
+            text: 'Thank you for your payment.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }
+
     const totalQty = Object.values(quantities).reduce((acc, qty) => acc + qty, 0);
     setTotalQuantity(totalQty);
   }, [quantities]);
@@ -45,15 +55,28 @@ const ShoppingCart = () => {
     setQuantities(updatedQuantities);
   };
 
-  const handleLogCart = () => {
-    console.log('Current Quantities:', quantities);
+  const handleUpdateQuantities = (updatedQuantities) => {
+    setQuantities(updatedQuantities);
   };
 
-
   const [showDialog, setShowDialog] = useState(false);
-  const handleConfirmPayment = (totalAmout) => {
-    console.log('totalAmout:', totalAmout);
-    setShowDialog(false);
+  const handleConfirmPayment = async (totalAmount, orderedItem) => {
+    // console.log(totalAmount);
+    // console.log('finalItem',orderedItem);
+    try {
+      const response = await axios.post('http://127.0.0.1:8005/api/requestPayment', {
+        totalAmount: totalAmount,
+        orderedItem: orderedItem
+      });
+      console.log(response);
+      if (response.status === 200) {
+        window.location.href = response.data.url;
+      } else {
+        console.error('Failed to get payment URL');
+      }
+    } catch (error) {
+      console.error('Error making API call:', error);
+    }
   };
 
   return (
@@ -63,6 +86,7 @@ const ShoppingCart = () => {
                 onHide={() => setShowDialog(false)}
                 products={products}
                 quantities={quantities}
+                onUpdateQuantities={handleUpdateQuantities}
                 onConfirmPayment={handleConfirmPayment}
             />
       <div className="basket-icon">
@@ -157,9 +181,6 @@ const ShoppingCart = () => {
         </Form>
         <div className="m-3 mb-5 d-flex justify-content-end">
             <button type="button" className="btn btn-primary p-3" onClick={() => setShowDialog(true)}>Proceed to Payment</button>
-            <button hidden type="button" className="p-3 ml-3" onClick={handleLogCart}>
-          Log Cart
-        </button>
         </div>
         <br/><br/>
     </div>
