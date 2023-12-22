@@ -1,13 +1,13 @@
 .basket-icon {
     position: fixed;
-    top: 120px; /* Adjust the distance from the bottom */
-    right: 100px; /* Adjust the distance from the right */
+    top: 50px; /* Adjust the distance from the bottom */
+    right: 50px; /* Adjust the distance from the right */
     z-index: 1000; /* Ensure the icon is above other elements */
 }
 
 .basket-icon2 {
     position: fixed;
-    top: 110px; /* Adjust the distance from the bottom */
+    top:40px; /* Adjust the distance from the bottom */
     right: 90px; /* Adjust the distance from the right */
     z-index: 1000; /* Ensure the icon is above other elements */
 }

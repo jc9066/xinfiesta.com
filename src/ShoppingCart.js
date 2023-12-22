@@ -103,7 +103,7 @@ const ShoppingCart = () => {
         {products.map((product) => (
           <div className="col-6 p-2" key={product.itemcode}>
             <img
-              src={product.images.length > 0 ? `/images/${product.images[0]}` : '/images/no_image.jpg'}
+              src={product.images.length > 0 ? process.env.PUBLIC_URL + `/images/${product.images[0]}` : process.env.PUBLIC_URL + '/no_image.jpg'}
               className="card-img-top"
               alt="Product"
             />            
