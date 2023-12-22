@@ -1,0 +1,108 @@
+.basket-icon {
+    position: fixed;
+    top: 120px; /* Adjust the distance from the bottom */
+    right: 100px; /* Adjust the distance from the right */
+    z-index: 1000; /* Ensure the icon is above other elements */
+}
+
+.basket-icon2 {
+    position: fixed;
+    top: 110px; /* Adjust the distance from the bottom */
+    right: 90px; /* Adjust the distance from the right */
+    z-index: 1000; /* Ensure the icon is above other elements */
+}
+
+.basket-icon2 button {
+    background-color: gray; /* Set your desired background color */
+    color: #fff; /* Set icon color to white */
+    border: none;
+    border-radius: 50%; /* Make the button circular */
+    width: 20px; /* Set the width of the circular button */
+    height: 20px; /* Set the height of the circular button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+}
+.basket-icon2 button:hover {
+    background-color: gray; /* Set your desired hover background color */
+}
+
+.basket-icon button {
+    background-color: #11c4e0; /* Set your desired background color */
+    color: #fff; /* Set icon color to white */
+    border: none;
+    border-radius: 50%; /* Make the button circular */
+    width: 60px; /* Set the width of the circular button */
+    height: 60px; /* Set the height of the circular button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+}
+
+.basket-icon button:hover {
+    background-color: #297fb8; /* Set your desired hover background color */
+}
+
+.form-control, .btn, .card{
+    border-radius: 20px; /* Adjust the value to control the roundness */
+}
+
+img {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #ced4da;
+}
+
+.card-img-top{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.productFrame{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid #ced4da;
+    padding: 30px 15px 30px 15px;
+}
+
+.btn-primary{
+    background-color: #11c4e0;
+    border: 0px
+}
+
+.btn-primary:hover{
+    background-color: #297fb8;
+}
+
+.btn-outline-primary{
+    color: #11c4e0;
+    border: 2px solid #11c4e0;
+    background-color: white;
+}
+
+.btn-outline-primary:hover{
+    background-color: #11c4e0;
+    color: white;
+    border: 2px solid #11c4e0;
+
+}
+
+.titleFocus{
+    color: #11c4e0;
+    font-weight: bold;
+
+}
+
+.btn, input, div, span{
+    font-family: sans-serif, 'Arial'; 
+    font-size: 14px;
+}
+
+body{
+    font-family: sans-serif, 'Arial';
+}
