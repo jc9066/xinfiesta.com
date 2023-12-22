@@ -64,7 +64,7 @@ const ShoppingCart = () => {
     // console.log(totalAmount);
     // console.log('finalItem',orderedItem);
     try {
-      const response = await axios.post('http://127.0.0.1:8005/api/requestPayment', {
+      const response = await axios.post('https://api.xinfiesta.com/api/requestPayment', {
         totalAmount: totalAmount,
         orderedItem: orderedItem
       });
