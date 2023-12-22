@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
 import './ShoppingCart.css';
+import CheckoutDialog from './CheckoutDialog';
 
 const ShoppingCart = () => {
     const [quantities, setQuantities] = useState({});
@@ -29,7 +30,6 @@ const ShoppingCart = () => {
   );
 
   useEffect(() => {
-    // Calculate total quantity when quantities state changes
     const totalQty = Object.values(quantities).reduce((acc, qty) => acc + qty, 0);
     setTotalQuantity(totalQty);
   }, [quantities]);
@@ -48,15 +48,24 @@ const ShoppingCart = () => {
     console.log('Current Quantities:', quantities);
   };
 
-  const handlePayment = async (event) => {
-   console.log("Payemnt");
-  };
 
+  const [showDialog, setShowDialog] = useState(false);
+  const handleConfirmPayment = (totalAmout) => {
+    console.log('totalAmout:', totalAmout);
+    setShowDialog(false);
+  };
 
   return (
     <div class="container">
+            <CheckoutDialog
+                show={showDialog}
+                onHide={() => setShowDialog(false)}
+                products={products}
+                quantities={quantities}
+                onConfirmPayment={handleConfirmPayment}
+            />
       <div className="basket-icon">
-        <button className="p-0 border-0">
+        <button className="p-0 border-0" onClick={() => setShowDialog(true)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="40" viewBox="0 0 16 16"><path fill="white" d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/></svg>        
         </button>
       </div>
@@ -146,13 +155,12 @@ const ShoppingCart = () => {
             <input type="number" class="form-control p-3 mt-1" placeholder="Postal Code"/>
         </div>
         <div class="m-3 mb-5 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary p-3" onClick={handlePayment}>Proceed to Payment</button>
+            <button type="button" class="btn btn-primary p-3" onClick={() => setShowDialog(true)}>Proceed to Payment</button>
             <button hidden type="button" className="p-3 ml-3" onClick={handleLogCart}>
           Log Cart
         </button>
         </div>
         <br/><br/>
-      
     </div>
   );
 };
