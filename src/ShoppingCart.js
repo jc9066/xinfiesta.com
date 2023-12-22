@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Form } from 'react-bootstrap';
 // import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 // import { loadStripe } from '@stripe/stripe-js';
 import './ShoppingCart.css';
@@ -15,9 +16,9 @@ const ShoppingCart = () => {
     { itemcode: 'ORIGINALKEROPOK250', name: 'Lekor Original Favor (250g)', images:["originallekor150.jpg"], price: 15.00 },
     { itemcode: 'SPICYKEROPOK150', name: 'Lekor Sweet & Spicy Favor (150g)', images:["spicylekor150.jpg"], price: 10.00 },
     { itemcode: 'SPICYKEROPOK250', name: 'Lekor Sweet & Spicy Favor (250g)', images:["spicylekor150.jpg"], price: 15.00 },
-    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["no_image.jpg"], price: 10.00 },
     { itemcode: 'ABALONE001', name: 'Canned Abalone (425g)', images:["cannedabalone.jpg"], price: 15.00 },
     { itemcode: 'BRAISEDABALONE', name: 'Braised Abalone (425g)', images:["braisedabalone.jpg"], price: 15.00 },
+    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["no_image.jpg"], price: 10.00 },
   ];
   const [totalQuantity, setTotalQuantity] = useState(0);
   const basketPreviewText = (
@@ -56,7 +57,7 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div class="container">
+    <div className="container">
             <CheckoutDialog
                 show={showDialog}
                 onHide={() => setShowDialog(false)}
@@ -75,23 +76,23 @@ const ShoppingCart = () => {
         </button>
       </div>
         <h1 className="m-5 text-center">{headerTitle}</h1>
-        <h6><span class="titleFocus">1. </span>Items *</h6>
-        <div class="card m-3">
-            <div class="card-body">
+        <h6><span className="titleFocus">1. </span>Items *</h6>
+        <div className="card m-3">
+            <div className="card-body">
                 <span>{basketPreviewText}</span> 
             </div>
         </div>
-        <div class="card m-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
+        <div className="card m-3">
+            <div className="card-body">
+                <div className="row">
+                    <div className="col-10">
                     {listProdText}
                     </div>
-                    <div class="col-2 d-flex justify-content-end">
-                        <button class="p-0 mr-1 border-0 btn">
+                    <div className="col-2 d-flex justify-content-end">
+                        <button className="p-0 mr-1 border-0 btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512"><path fill="gray" d="M40 48c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24zm152 16c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h288c17.7 0 32-14.3 32-32s-14.3-32-32-32zM16 232v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24m24 136c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24z"/></svg>
                         </button>
-                        <button class="p-0 mr-1 border-0 btn" style={{ borderBottom: '1px #11c4e0 solid' }}>
+                        <button className="p-0 mr-1 border-0 btn" style={{ borderBottom: '1px #11c4e0 solid' }}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 1024 1024"><path fill="gray" d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16m-52 268H212V212h200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16m-52 268H612V212h200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16m-52 268H212V612h200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16m-52 268H612V612h200z"/></svg> 
                         </button>
                    </div>
@@ -99,9 +100,9 @@ const ShoppingCart = () => {
             </div>
         </div>
 
-        <div class="row mx-3" style={{ maxHeight: '1000px', overflowY: 'auto' }}>
+        <div className="row mx-3" style={{ maxHeight: '1000px', overflowY: 'auto' }}>
         {products.map((product) => (
-          <div className="col-6 p-2" key={product.itemcode}>
+          <div className="col-4 p-2" key={product.itemcode}>
             <img
               src={product.images.length > 0 ? process.env.PUBLIC_URL + `/images/${product.images[0]}` : process.env.PUBLIC_URL + '/no_image.jpg'}
               className="card-img-top"
@@ -135,26 +136,27 @@ const ShoppingCart = () => {
           </div>
         ))}
         </div>
-
-        <h6 class="mt-5"><span class="titleFocus">2. </span>Full Name *</h6>
-        <div class="m-3 mb-5">
-            <input type="text" class="form-control p-3" placeholder="Xinfiesta Pte Ltd"/>
+        <Form>
+        <h6 className="mt-5"><span className="titleFocus">2. </span>Full Name *</h6>
+        <div className="m-3 mb-5">
+            <input type="text" className="form-control p-3" name="fullName" placeholder="Xinfiesta Pte Ltd"/>
         </div>
-        <h6><span class="titleFocus">3. </span>Phone Number *</h6>
-        <div class="m-3 mb-5">
-            <input type="number" class="form-control p-3" placeholder="+65 8896 5234"/>
+        <h6><span className="titleFocus">3. </span>Phone Number *</h6>
+        <div className="m-3 mb-5">
+            <input type="number" className="form-control p-3" name="phoneNumber" placeholder="+65 8896 5234"/>
         </div>
-        <h6><span class="titleFocus">4. </span>Email Address *</h6>
-        <div class="m-3 mb-5">
-            <input type="email" class="form-control p-3" placeholder="sales@xinfiesta.com"/>
+        <h6><span className="titleFocus">4. </span>Email Address *</h6>
+        <div className="m-3 mb-5">
+            <input type="email" className="form-control p-3" name="emailAddress" placeholder="sales@xinfiesta.com"/>
         </div>
-        <h6><span class="titleFocus">5. </span>Delivery Address *</h6>
-        <div class="row m-3 mb-5">
-            <input type="text" class="form-control p-3" placeholder="Delivery Address"/>
-            <input type="number" class="form-control p-3 mt-1" placeholder="Postal Code"/>
+        <h6><span className="titleFocus">5. </span>Delivery Address *</h6>
+        <div className="row m-3 mb-5">
+            <input type="text" className="form-control p-3" name="deliveryAddress" placeholder="Delivery Address"/>
+            <input type="number" className="form-control p-3 mt-1" name="postalCode"  placeholder="Postal Code"/>
         </div>
-        <div class="m-3 mb-5 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary p-3" onClick={() => setShowDialog(true)}>Proceed to Payment</button>
+        </Form>
+        <div className="m-3 mb-5 d-flex justify-content-end">
+            <button type="button" className="btn btn-primary p-3" onClick={() => setShowDialog(true)}>Proceed to Payment</button>
             <button hidden type="button" className="p-3 ml-3" onClick={handleLogCart}>
           Log Cart
         </button>
