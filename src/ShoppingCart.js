@@ -126,7 +126,7 @@ const ShoppingCart = () => {
 
         <div className="row mx-3" style={{ maxHeight: '1600px', overflowY: 'auto' }}>
         {products.map((product) => (
-          <div className="col-4 p-2" key={product.itemcode}>
+          <div className="col-md-4 col-sm-6 p-2" key={product.itemcode}>
             <img
               src={product.images.length > 0 ? process.env.PUBLIC_URL + `/images/${product.images[0]}` : process.env.PUBLIC_URL + '/no_image.jpg'}
               className="card-img-top"
