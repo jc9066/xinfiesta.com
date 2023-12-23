@@ -32,7 +32,7 @@ const ShoppingCart = () => {
 
   useEffect(() => {
     const queryString = window.location.search;
-    if(queryString=="?t=success"){
+    if(queryString==="?t=success"){
         Swal.fire({
             title: 'Order Received!',
             text: 'Thank you for your payment.',
@@ -124,7 +124,7 @@ const ShoppingCart = () => {
             </div>
         </div>
 
-        <div className="row mx-3" style={{ maxHeight: '1000px', overflowY: 'auto' }}>
+        <div className="row mx-3" style={{ maxHeight: '1600px', overflowY: 'auto' }}>
         {products.map((product) => (
           <div className="col-4 p-2" key={product.itemcode}>
             <img
@@ -160,7 +160,7 @@ const ShoppingCart = () => {
           </div>
         ))}
         </div>
-        <Form>
+        <Form hidden>
         <h6 className="mt-5"><span className="titleFocus">2. </span>Full Name *</h6>
         <div className="m-3 mb-5">
             <input type="text" className="form-control p-3" name="fullName" placeholder="Xinfiesta Pte Ltd"/>
