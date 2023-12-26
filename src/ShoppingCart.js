@@ -16,7 +16,10 @@ const ShoppingCart = () => {
     { itemcode: 'ORIGINALKEROPOK250', name: 'Lekor Original Favor (250g)', images:["originallekor250.jpg"], price: 15.00 },
     { itemcode: 'SPICYKEROPOK150', name: 'Lekor Sweet & Spicy Favor (150g)', images:["spicylekor150.jpg"], price: 10.00 },
     { itemcode: 'SPICYKEROPOK250', name: 'Lekor Sweet & Spicy Favor (250g)', images:["spicylekor250.jpg"], price: 15.00 },
-    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["crabstick.jpg"], price: 10.00 },
+    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["crabstick150.jpg"], price: 10.00 },
+    { itemcode: 'SPICYPRAWN300', name: 'Mini Prawn Rolls (300g)', images:["prawnstick300.jpg"], price: 15.00 },
+    { itemcode: 'PORKFLOSS350', name: 'Mini Pork Floss Rolls (350g)', images:["porkfloss350.jpg"], price: 15.00 },
+    { itemcode: 'PEANITPUFF300', name: 'Mini Peanut Puffs (300g)', images:["peanutpuff300.jpg"], price: 12.00 },
     { itemcode: 'ABALONE001', name: 'Canned Abalone (425g)', images:["cannedabalone.jpg"], price: 18.00 },
     { itemcode: 'BRAISEDABALONE', name: 'Braised Abalone (425g)', images:["braisedabalone.jpg"], price: 18.00 },
   ];
