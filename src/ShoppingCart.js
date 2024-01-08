@@ -12,16 +12,17 @@ const ShoppingCart = () => {
   const headerTitle = "";
   const listProdText = "Listing Products";
   const products = [
-    { itemcode: 'ORIGINALKEROPOK150', name: 'Lekor Original Favor (150g)', images:["originallekor150.jpg"], price: 10.00 },
-    { itemcode: 'ORIGINALKEROPOK250', name: 'Lekor Original Favor (250g)', images:["originallekor250.jpg"], price: 15.00 },
-    { itemcode: 'SPICYKEROPOK150', name: 'Lekor Sweet & Spicy Favor (150g)', images:["spicylekor150.jpg"], price: 10.00 },
-    { itemcode: 'SPICYKEROPOK250', name: 'Lekor Sweet & Spicy Favor (250g)', images:["spicylekor250.jpg"], price: 15.00 },
-    { itemcode: 'CRABSTICK150', name: 'Crabstick Snack (150g)', images:["crabstick150.jpg"], price: 10.00 },
-    { itemcode: 'SPICYPRAWN300', name: 'Mini Prawn Rolls (300g)', images:["prawnstick300.jpg"], price: 15.00 },
-    { itemcode: 'PORKFLOSS350', name: 'Mini Pork Floss Rolls (350g)', images:["porkfloss350.jpg"], price: 15.00 },
-    { itemcode: 'PEANITPUFF300', name: 'Mini Peanut Puffs (300g)', images:["peanutpuff300.jpg"], price: 12.00 },
-    { itemcode: 'ABALONE001', name: 'Canned Abalone (425g)', images:["cannedabalone.jpg"], price: 18.00 },
-    { itemcode: 'BRAISEDABALONE', name: 'Braised Abalone (425g)', images:["braisedabalone.jpg"], price: 18.00 },
+    { itemcode: 'ORIGINALKEROPOK150', name: 'Keropok Lekor Original Flavor (150g)', images:["originallekor150.jpg"], price: 10.00 },
+    { itemcode: 'ORIGINALKEROPOK250', name: 'Keropok Lekor Original Flavor (250g)', images:["originallekor250.jpg"], price: 15.00 },
+    { itemcode: 'SPICYKEROPOK150', name: 'Keropok Lekor Sweet & Spicy Favor (150g)', images:["spicylekor150.jpg"], price: 10.00 },
+    { itemcode: 'SPICYKEROPOK250', name: 'Keropok Lekor Sweet & Spicy Favor (250g)', images:["spicylekor250.jpg"], price: 15.00 },
+    { itemcode: 'CRABSTICK150', name: 'Premium Crabstick Snacks (130g)', images:["crabstick150.jpg"], price: 10.00 },
+    { itemcode: 'SPICYPRAWN300', name: 'Premium Mini Prawn Rolls (300g)', images:["prawnstick300.jpg"], price: 15.00 },
+    { itemcode: 'CHICKENFLOSS300', name: 'Premium Mini Chicken Floss (300g)', images:["porkfloss350.jpg"], price: 15.00 },
+    { itemcode: 'SPICYBELINJO250', name: 'Premium Spicy Belinjo (250g)', images:["spicybelinjo250.jpg"], price: 10.00 },
+    //{ itemcode: 'PEANITPUFF300', name: 'Premium Mini Peanut Puffs (300g)', images:["peanutpuff300.jpg"], price: 12.00 },
+    //{ itemcode: 'ABALONE001', name: 'Canned Abalone (425g)', images:["cannedabalone.jpg"], price: 18.00 },
+    //{ itemcode: 'BRAISEDABALONE', name: 'Braised Abalone (425g)', images:["braisedabalone.jpg"], price: 18.00 },
   ];
   const [totalQuantity, setTotalQuantity] = useState(0);
   const basketPreviewText = (

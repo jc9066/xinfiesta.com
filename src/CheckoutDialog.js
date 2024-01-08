@@ -38,14 +38,14 @@ const CheckoutDialog = ({ show, onHide, products, quantities, onUpdateQuantities
     const subtotal = calculateSubtotal();
 
     let deliveryFee = 0;
-    if (subtotal < 50) {
+    if (subtotal <= 50) {
       deliveryFee = 5;
     }
   
     return subtotal + deliveryFee;
   };
 
-  const deliveryFee = calculateTotalPayment() < 50 ? 5 : 0;  
+  const deliveryFee = calculateSubtotal() <= 50 ? 5 : 0;  
   finalProducts.push({
     name: 'DELIVERY',
     price: deliveryFee,
@@ -64,11 +64,11 @@ const CheckoutDialog = ({ show, onHide, products, quantities, onUpdateQuantities
         <Modal.Title></Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form className='px-5 mt-3'>
+        <Form className='px-2 mt-3'>
           {products.map((product) => (
-            <div key={product.itemcode} className="d-flex justify-content-between align-items-center mb-3">
+            <div key={product.itemcode} className="d-flex justify-content-between align-items-center mb-3" >
                 <p>{product.name} - ${product.price.toFixed(2)} </p> 
-                <div className="w-1/2 d-flex justify-content-end align-items-center">
+                <div className="w-1/2 d-flex justify-content-end align-items-center" style={{ maxHeight: '500px', overflowY: 'auto' }}>
                 <input
                     type="number"
                     className=""
@@ -97,6 +97,11 @@ const CheckoutDialog = ({ show, onHide, products, quantities, onUpdateQuantities
                     <p>$ <span style={{ fontSize: '14px' }}>{deliveryFee.toFixed(2)}</span></p>
                 </div>
             </div>
+            {deliveryFee !== 0 ? (
+                <div className="col-12 alert alert-warning px-3 py-1">
+                    <p className='p-0'>Enjoy Complimentary Delivery on Purchases Exceeding $50.</p>
+                </div>
+            ) : null}
          <hr/>
             <div className="row">
                 <div className="col-6 text-start">
